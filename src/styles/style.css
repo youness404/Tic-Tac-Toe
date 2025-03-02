@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+}
+.container{
+    text-align: center;
+    padding: 2rem;
+}
+h1,footer{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00ff87, #60efff);
+    animation: titleGlow 2s infinite alternate;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.game-board{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin: 2rem auto;
+    max-width: 400px;
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cell:hover{
+    background: rgba(146, 214, 205, 0.2);
+    transform: scale(1.05);
+}
+
+.status{
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.reset-btn{
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #2ae4e4, #c90546);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+    filter: blur(.5px);
+}
+
+.reset-btn:hover{
+    transform: scale(1.08);
+    filter: blur(0px);
+}
+
+.cell.x::before{
+    content: 'X';
+    position: absolute;
+    font-weight: bold;
+    color: red;
+}
+
+.cell.o::before{
+    content: 'O';
+    position: absolute;
+    font-weight: bold;
+    color: green;    
+}
+
+.win{
+    animation: winAnimation 1s ease;
+}
+
+
+@keyframes titleGlow {
+    from {
+        filter: drop-shadow(0 0 5px green);
+    }
+    to{
+        filter: drop-shadow(0 0 20px red);
+    }
+}
+@keyframes winAnimation {
+    0%{ transform: scale(1)}
+    50%{ transform: scale(1.1)}
+    100%{ transform: scale(1)}
+}
